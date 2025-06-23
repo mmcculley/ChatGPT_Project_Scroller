@@ -1,65 +1,64 @@
-# ChatGPT Project Conversation Scroll Fixer 🪄
+# ChatGPT Project Scroller Fixer
 
-A lightweight Chrome extension that fixes the scrollbar issue within the **Project Conversation List** in ChatGPT. Ensures the conversation list scrolls properly without creating double-scrollbars in regular chats.
-
----
-
-## ✨ Features
-
-- 📜 **Smooth scrolling** for long conversation lists in project views
-- 🚫 **Avoids double-scrollbar glitches** in standard chat views
-- ⚙️ **Auto-injection** on domains `chat.openai.com` and `chatgpt.com`
-- 🧱 **Minimal footprint** — small JS + CSS, no dependencies
+A lightweight Chrome extension to fix scrolling behavior in ChatGPT's "Project Conversations" sidebar—ensuring a smoother UX when navigating large lists of conversation threads.
 
 ---
 
-## ⚙️ Installation (Unpacked)
+## 💎 Features
 
-1. Download or clone this repo.
-2. Go to `chrome://extensions/`, enable **Developer Mode**.
-3. Click **“Load unpacked”** → select this repository's folder.
-4. Navigate to a **ChatGPT project view** (URL contains `/g/…`).
-5. The scroll fix is injected automatically.
-
----
-
-## 🧪 Usage
-
-- Works on both `chat.openai.com` and `chatgpt.com`
-- Conversation container is detected dynamically — no manual intervention needed
-- No console spam — fully silent in production
+- Automatically detects when you're inside a ChatGPT project (`/g/` path).
+- Adjusts the height and overflow of the conversation list container.
+- Prevents scroll lock and nested scrollbars on long project lists.
+- Clean, minimal injection—no page breakage.
 
 ---
 
-## 🧩 Customization & Future Enhancements
+## 📦 Installation
 
-Want more features? Consider adding:
+1. Clone or download this repo:
 
-- A **toolbar button** to toggle the scroll fix
-- Votes or UI enhancements to project and conversation lists
-- A **CSV export** for conversation titles
-- Icon updates and publishing to the Chrome Web Store
+```bash
+git clone https://github.com/mmcculley/ChatGPT_Project_Scroller.git
+```
 
-Feel free to fork and submit PRs!
+2. Visit `chrome://extensions/` in Chrome.
 
----
+3. Enable **Developer Mode**.
 
-## 🔨 Development
-
-- **manifest.json**: defines auto-injection scripts and permissions
-- **inject.js**: main logic — URL detection, DOM queries, and CSS patching
-- **.gitignore**: excludes system files (`desktop.ini`, `.DS_Store`) and common artifacts
+4. Click **“Load unpacked”** and select the project folder.
 
 ---
 
-## 🧾 License
+## 💠 Tech
 
-[MIT License](LICENSE) — free to use and modify. Attribution appreciated!
+- JavaScript DOM injection via `inject.js`
+- Manifest V3 Chrome extension
+- Custom icon set and `favicon.ico` for clear visual identification
 
 ---
 
-## 👨‍💻 About
+## 🔍 How It Works
 
-Created by Mike McCulley ([@mmcculley](https://github.com/mmcculley)).  
-Open source & actively maintained — thanks for your support!
+The extension runs on ChatGPT pages with URLs containing `/g/`, finds the anchor for the current conversation, moves 3 `div` parents up, and applies a fixed height and `overflow-y: auto` to ensure proper scrolling.
 
+You can customize this logic in `inject.js` if needed.
+
+---
+
+## 🧪 Status
+
+✅ Tested in Chrome  
+� May cause minor double-scroll artifacts outside of `/g/` paths (currently constrained)
+
+---
+
+## ✍️ Author
+
+Michael McCulley  
+[github.com/mmcculley](https://github.com/mmcculley)
+
+---
+
+## 📄 License
+
+MIT License
